@@ -1,0 +1,215 @@
+.landing{
+
+    &__tours{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__information{
+        font-size: 1.8rem;
+    }
+
+    &__btn-reserve{
+        font-size: 1.2em;
+    }
+
+    &__img-tour{
+        position: relative;
+        width: 100%;
+        height: 90vh;
+        -webkit-background-size: cover !important;
+        -moz-background-size: cover !important;
+        -o-background-size: cover !important;
+        background-size: cover !important;
+        &__legend{
+            position: absolute;
+            bottom:0;
+            right:0;
+            color: white;
+            width: 100%;
+            //padding: 0px 20px;
+        }
+        &__legend2{
+            margin-top: 50px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 90px;
+            background: url("/img/black.png");
+
+        }
+
+
+
+        &__legend2big{
+            height: 65vh;
+        }
+
+        &__legend2content{
+            color: white;
+            height: 30vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+
+        &__bottom-info{
+            position: relative;
+            margin-top: -10px;
+        }
+    }
+
+    .datepicker, .input{
+        background-color: white;
+        width: 250px;
+        padding: 6px;
+        text-align: center;
+        color: black;
+        font-weight: bold;
+    }
+
+    &__lbl-pickup{
+        font-size: 1.8em;
+    }
+
+}
+
+.scrollBody::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+
+}
+
+
+.scrollBody::-webkit-scrollbar
+{
+    width: 6px;
+    background-color: #F5F5F5;
+    height: 5px;
+}
+
+
+.scrollBody::-webkit-scrollbar-thumb
+{
+    background-color: $blue;
+}
+
+.input-number{
+    width: 50px;
+    text-align: center;
+    padding: 8px;
+    font-weight: bold;
+}
+
+.form-new{
+    background-color: white;
+    width: 155px;
+    padding: 6px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+.label-white{
+    background-color: white;
+    width: 250px;
+    padding: 8px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
+.icon-calendar{
+    font-size: 2.6em;
+}
+.cursor{
+    cursor: pointer;
+}
+
+@media (max-width: 576px) {
+    .landing {
+
+        .input-number{
+            padding: 4px;
+        }
+
+        &__btn-reserve{
+            font-size: 16px;
+        }
+
+        &__information-movil {
+            font-size: 10px;
+            text-align: center;
+            padding: 10px 0px;
+        }
+
+        &__information {
+
+            display: none;
+        }
+
+        &__img-tour__legend2 h1 {
+            font-size: 1.2rem;
+        }
+
+        &__img-tour__legend2 {
+            padding-top: 10px;
+            display: block;
+            text-align: center;
+            height: 27vh;
+        }
+
+        &__img-tour__legend2 {
+            /* height: 50vh;*/
+        }
+
+        /*&__img-tour{
+            &__legend2{
+                height: 80vh;
+            }
+        }*/
+        .more {
+            height: 90vh;
+        }
+
+        .label-white, .datepicker, .input {
+            width: 100%;
+        }
+
+        &__img-tour {
+            &__bottom-info {
+                text-align: center;
+                font-size: 8px;
+            }
+        }
+
+        &__tours {
+            justify-content: center;
+            font-size: 10px;
+            display: block;
+            text-align: center;
+        }
+
+        &__lbl-pickup{
+            font-size: 8px;
+        }
+
+    }
+
+
+    .text-lbl {
+        text-align: center;
+    }
+
+    .navbar-brand {
+        font-size: 10px;
+    }
+
+    .order-small {
+        font-size: 7px;
+    }
+
+
+
+}
+

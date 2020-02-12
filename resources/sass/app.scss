@@ -1,1 +1,34 @@
-//
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import "components/landing";
+@import "components/preorder";
+
+.navbar-dark{
+    color:  white !important;
+}
+
+
+
+.bg-dark{
+    background-color: black !important;
+}
+
+.bg-gray{
+    background-color: #3C3C3C !important;
+}
+
+.bg-gray-light{
+    background-color: #dbdbdb !important;
+}
+
+.VERY-SMALL{
+    font-size: 0.5em;
+    font-weight: 600;
+}
