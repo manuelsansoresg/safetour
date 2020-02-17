@@ -65,7 +65,7 @@
                             $checked = ($order->type_pay_id == $type_pay->id) ? 'checked' : '';
                             ?>
                             <div class="form-group row {{ ($type == 1)? '' : 'd-none' }}">
-                                <label for="staticEmail" class="col-12 col-md-5 col-form-label font-weight-bold">{{ strtoupper($type_pay->name) }}</label>
+                                <label for="staticEmail" class="col-12 col-md-5 col-form-label font-weight-bold">{!! strtoupper($type_pay->name) !!}</label>
                                 <div class="col-sm-7">
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="payed[]"  {{ $checked }} disabled>
@@ -84,9 +84,9 @@
                             </div>
                         </div>
 
-
-
-
+                        <div class="form-group row">
+                            <a href="/order/pdf/{{ $order->id }}" onclick="" class="btn btn-warning btn-lg btn-block font-weight-bold">Download Tour Receipt</a>
+                        </div>
                     </div>
                 </div>
             </div>

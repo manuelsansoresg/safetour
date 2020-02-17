@@ -20,6 +20,19 @@ class Order extends Model
         return $tour;
     }
 
+    public static function getById($order_id)
+    {
+        DB::enableQueryLog();
+        $order = Order::select('tours.id', 'slug', 'tours.name as name', 'orders.name as name_user', 'pickuppoints.name as pays_name', 'type_pay_id', 'watsapp', 'tours.name as name_tour', 'quantity as persons', 'date', 'email', 'total_price')
+                    ->join('type_pays', 'type_pays.id', '=', 'orders.type_pay_id', 'left')
+                    ->join('pickuppoints', 'pickuppoints.id', '=', 'orders.pickuppoint_id', 'left')
+                    ->join('tours', 'tours.id', '=', 'orders.tour_id')
+                    ->where('orders.id', $order_id )
+                    ->first();
+
+        return $order;
+    }
+
     public static function getTotal($request)
     {
         $price      = $request->price;
@@ -50,7 +63,7 @@ class Order extends Model
         $order->email              = $request->email;
         $order->type_pay_id        = $request->payed;
         $order->name               = $request->name;
-        $order->watsapp            = $request->name;
+        $order->watsapp            = $request->watsapp;
         $order->pickuppoint_id     = $request->point;
         $order->date               = $request->date;
         $order->tour_id            = $tour->id;

@@ -2159,7 +2159,7 @@ $(document).ready(function () {
         axios.get(url).then(function (response) {
           var result = response.data;
           $('#spinner').hide();
-          /* window.location = result.url;*/
+          window.location = result.url;
         })["catch"](function (error) {
           $('#spinner').hide();
         });
@@ -2279,12 +2279,15 @@ $(document).ready(function () {
   }
 
   if ($(".datepicker").length > 0) {
-    $(".datepicker").datepicker();
-    $(".datepicker").datepicker("option", "dateFormat", 'd M, y');
+    $(".datepicker").datepicker({
+      dateFormat: 'd M, y',
+      minDate: '+1d'
+    });
   }
 
   $('.datepicker_cotizador').datepicker({
-    dateFormat: 'd M, y'
+    dateFormat: 'd M, y',
+    minDate: '+1d'
   });
 
   if ($(".landing").length > 0) {

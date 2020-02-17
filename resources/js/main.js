@@ -80,13 +80,11 @@ $(document).ready(function() {
         );
     }
     if ( $(".datepicker").length > 0 ) {
-        $( ".datepicker" ).datepicker();
-        $( ".datepicker" ).datepicker( "option", "dateFormat", 'd M, y' );
+        $( ".datepicker" ).datepicker({ dateFormat: 'd M, y', minDate: '+1d' });
+
     }
 
-    $('.datepicker_cotizador').datepicker({
-        dateFormat: 'd M, y'
-    });
+    $('.datepicker_cotizador').datepicker({ dateFormat: 'd M, y', minDate: '+1d' });
 
 
     if ( $(".landing").length > 0 ) {

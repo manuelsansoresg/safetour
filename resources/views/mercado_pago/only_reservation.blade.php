@@ -67,10 +67,6 @@
                                 <div class="col-12 text-center bg-gray-light py-2 h5" id="d_total"> {{ price($order->total_price) }} MXN</div>
                             </div>
                         </div>
-
-
-
-
                     </div>
                 </div>
             </div>

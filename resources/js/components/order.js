@@ -73,7 +73,7 @@ $(document).ready(function() {
                     .then(function (response) {
                         var result = response.data;
                         $('#spinner').hide();
-                       /* window.location = result.url;*/
+                        window.location = result.url;
 
                     })
                     .catch(function (error) {

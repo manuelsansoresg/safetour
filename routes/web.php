@@ -37,6 +37,7 @@ Route::get('/checkout/pending', 'MercadoPagoController@pending')->name('checkout
 Route::get('/checkout/error', 'MercadoPagoController@error')->name('checkout.error');
 Route::get('/checkout/only-reservation/{order_id}', 'MercadoPagoController@only_reservation');
 Route::get('/checkout/ipn', 'MercadoPagoController@ipn')->name('ipn');
+Route::get('/order/pdf/{order_id}', 'MercadoPagoController@pdf');
 
 
 

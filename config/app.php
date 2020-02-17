@@ -177,6 +177,8 @@ return [
 
         CodemanCompany\LaravelMercadoPago\Providers\MercadoPagoServiceProvider::class,
 
+        Barryvdh\DomPDF\ServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +231,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'MP' => CodemanCompany\LaravelMercadoPago\Facades\MP::class,
+
+        'PDF' => Barryvdh\DomPDF\Facade::class,
 
     ],
 

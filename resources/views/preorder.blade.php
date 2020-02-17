@@ -95,8 +95,12 @@
                             </div>
                         </div>
                         <div class="form-group row justify-content-center text-center">
-                            <button class="btn btn-warning btn-block font-weight-bold"> <span class="h3 font-weight-bold">BUY</span> <br>All Tours Include Pick Up Transportation </button>
-                            <button  onclick="onlyReservation()" class="btn btn-primary btn-block font-weight-bold"> <span class="h3 font-weight-bold">RESERVE PAY AT PICK UP</span>  <br> Only for Playa del Carmen  </button>
+                            <button class="btn btn-warning btn-block font-weight-bold"> <span class="font-weight-bold">BUY</span>  </button>
+                            <small class="text-center">  All Tours Include Pick Up Transportation</small>
+                            <div class="w-100"></div>
+                            <button  onclick="onlyReservation()" class="btn btn-primary btn-block font-weight-bold"> <span class="font-weight-bold">RESERVE PAY AT PICK UP</span>    </button>
+                            <small class="text-center">Only for Playa del Carmen</small>
+                            <div class="w-100"></div>
                             <p class="text-success mt-2 order-small  font-weight-bold">YOU WILL RECIVE A  <span  class="text-dark">watsapp</span> TO CONFIRM YOUR RESERVATION </p>
                         </div>
 

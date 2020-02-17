@@ -38,7 +38,7 @@
                     <div class="landing__img-tour__legend2 landing__img-tour__legend2big more" id="more{{ $cont }}" style="display: none">
 
                         <div class="col-12 col-md-3 text-center">
-                            <sup><span class="badge "> <a class="cursor" onclick="closeMore('{{ $cont }}')"><i class="fas fa-times-circle fa-3x"></i></a> </span></sup> <span class="h1">{{ $tour->name }}</span>
+                             <span class="h1">{{ $tour->name }}</span> <sup><span class="badge badge-close"> <a class="cursor" onclick="closeMore('{{ $cont }}')"><i class="fas fa-times fa-2x"></i></a> </span></sup>
                         </div>
                         <div class="col-12 col-md-4 ">
                             <div class="scrollBody landing__img-tour__legend2content text-white">
@@ -48,42 +48,64 @@
                         </div>
                         <div class="col-md-5">
                             {{ Form::open(['route' => ['pay.preorder', $tour->slug], 'method' => 'GET', 'class' => 'needs-validation', 'novalidate']) }}
-                            <div class="row mt-3">
-                                <div class="col-2">
-                                    <input type="number" onchange="setTotal('{{ $cont }}')" min="1"  class="input-number" name="persons[]" id="persons{{ $cont }}" value="1">
-                                </div>
-                                <div class="col-10">
-                                    <div class="h5 label-white">#persons</div>
+                            <div class="row mt-3 justify-content-center">
+                               {{-- <div class="col-2 d-none">
+                                    <input  type="number" onchange="setTotal('{{ $cont }}')" min="1"  class="input-number d-none"  value="1">
+                                </div>--}}
+                                <div class="col-10 col-md-6">
+                                    <div class="h5">
+                                        <select class="form-control" name="persons[]" id="persons{{ $cont }}" >
+                                            <option value="0"># Persons</option>
+                                            <option value="1">1 Person</option>
+                                            <option value="2">2 Persons</option>
+                                            <option value="3">3 Persons</option>
+                                            <option value="4">4 Persons</option>
+                                            <option value="5">5 Persons</option>
+                                            <option value="6">6 Persons</option>
+                                            <option value="7">7 Persons</option>
+                                            <option value="8">8 Persons</option>
+                                            <option value="9">9 Persons</option>
+                                            <option value="10">10 Persons</option>
+                                            <option value="11">11 Persons</option>
+                                            <option value="12">12 Persons</option>
+                                            <option value="13">13 Persons</option>
+                                            <option value="14">14 Persons</option>
+                                            <option value="15">15 Persons</option>
+                                            <option value="16">16 Persons</option>
+                                            <option value="17">17 Persons</option>
+                                            <option value="18">18 Persons</option>
+                                            <option value="19">19 Persons</option>
+                                            <option value="20">20 Persons</option>
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-2">
+                            <div class="row mt-2 justify-content-center">
+                                {{--<div class="col-2">
                                     <i onclick="showCalendar('{{  $cont }}')" class="far fa-calendar-alt icon-calendar"></i>
-                                </div>
-                                <div class="col-10 text-sm-left">
-                                    <input type="text" name="date[]" id="datepicker{{ $cont }}" class="datepicker" readonly autocomplete="off">
+                                </div>--}}
+                                <div class="col-10 col-md-6  text-sm-left">
+                                    <input type="text" name="date[]" placeholder="Tour Date" id="datepicker{{ $cont }}" class="datepicker" readonly autocomplete="off">
                                     <input type="hidden"  name="price[]"  id="price{{ $cont }}" value="{{ $tour->price }}">
                                     <input type="hidden"  name="slug[]"   value="{{ $tour->slug }}">
                                 </div>
                             </div>
-                            <div class="row mt-2">
-                                <div class="col-2">
+                            <div class="row mt-2 justify-content-center mt-4">
 
-                                </div>
-                                <div class="col-10 text-left text-sm-left">
-                                    <input type="text" name="total[]"  id="total{{ $cont }}" class="input"  value="TOTAL {{ $tour->price }} MXN" >
+                                <div class="col-10 col-md-6 text-left text-sm-left">
+                                    <input type="text" name="total[]"  id="total{{ $cont }}" style="background-color: #D9D9D9" class="input"  value="TOTAL {{ $tour->price }} MXN" >
                                 </div>
 
                             </div>
 
-                            <div class="row mt-2">
-                                <div class="offset-md-2 col-12 col-md-6 text-center">
+                            <div class="row mt-2 justify-content-center">
+                                <div class="col-10 col-md-6 text-center">
                                     <span>{{ getPayedOnline() }}% disscount paying online</span>
                                 </div>
                             </div>
 
-                            <div class="row mt-2">
-                                <div class="offset-md-2 col-12 col-md-6 text-center">
+                            <div class="row mt-2 justify-content-center">
+                                <div class="col-10 col-md-6 text-center">
                                     <button class="btn btn-warning btn-lg btn-block font-weight-bold">
                                         BUY
                                     </button>
@@ -91,8 +113,8 @@
                                 </div>
                             </div>
 
-                            <div class="row mt-2 mt-md-2">
-                                <div class="offset-md-2 col-12 col-md-6 text-center">
+                            <div class="row mt-2 mt-md-2 justify-content-center">
+                                <div class="col-10 col-md-6 text-center">
                                     <button class="btn btn-primary btn-lg btn-block font-weight-bold landing__btn-reserve">RESERVE PAY AT PICK UP</button>
                                     <small class="text-center">Only for Playa del Carmen</small>
                                 </div>
@@ -107,7 +129,7 @@
                 </div>
             </div>
             <div class="bg-dark text-white py-3 px-2 landing__img-tour__bottom-info">
-                THE RESERVATION NAME WILL BE THE SAME AS THE CARD HOLDER / <span class="font-weight-bold">YOU CAN PAY AT PICK UP 10% COMISSION PAYING WTH CREDIT / DEBIT CARD </span>
+                10% OFF PAYING ON LINE
             </div>
         @endforeach
     </div>
