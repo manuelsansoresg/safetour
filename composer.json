@@ -17,7 +17,7 @@
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.0",
         "mercadopago/dx-php": "1.2.1",
-        "verot/class.upload.php": "^2.0"
+        "verot/class.upload.php": "dev-master"
     },
     "require-dev": {
         "facade/ignition": "^1.4",
