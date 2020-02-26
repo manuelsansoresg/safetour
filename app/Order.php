@@ -11,7 +11,7 @@ class Order extends Model
 
     public static function getAll()
     {
-        $tour = Order::select('tours.name', 'orders.name as name_client', 'total_price', 'email', 'watsapp', 'quantity', 'date', 'status', 'orders.type', 'orders.created_at')
+        $tour = Order::select('tours.name',  'orders.name as name_client', 'total_price', 'email', 'watsapp', 'quantity', 'date', 'status', 'orders.type', 'orders.created_at')
                         ->join('type_pays', 'type_pays.id', '=', 'orders.type_pay_id')
                         ->join('pickuppoints', 'pickuppoints.id', '=', 'orders.pickuppoint_id')
                         ->join('tours', 'tours.id', '=', 'orders.tour_id')
@@ -35,19 +35,34 @@ class Order extends Model
 
     public static function getTotal($request)
     {
-        $price      = $request->price;
-        $persons    = $request->persons;
-        $payed_sel  = $request->payed;
+        $kids         = $request->kids;
+        $persons      = $request->persons;
+        $payed_sel    = $request->payed;
+        $tour_slug    = $request->tour_slug;
+
+        $tour         = Tour::where('slug', $tour_slug)->first();
+        $price_person = $tour->price;
+        $price_kids   = $tour->price_kids;
+
+
         $payed      = TypePay::find($payed_sel);
         $type_price = $payed->price;
 
         $percent    = $type_price / 100;
-        $subtotal   = $price * $percent;
-        $total      = $price;
-        if( $payed->type != '' ){
-            $total   = ($payed->type == '-' ) ? $price - $subtotal : $price + $type_price;
+
+        $price_adult  = $persons * $price_person;
+        $price_kids   = $kids * $price_kids;
+
+        $suma    = $price_adult + $price_kids;
+
+        if($payed_sel == 1){ //online
+            $sub_total = ($suma * $percent );
+            $total = $suma - $sub_total;
+        }else{
+
+            $total   = ($payed->type == '+' ) ? $suma + $type_price  : $suma;
         }
-        $total = $total * $persons;
+
         return $total;
     }
 
@@ -59,6 +74,7 @@ class Order extends Model
         $order                     = new Order();
         $order->title              = 'Tour-'.$tour->name;
         $order->quantity           = $request->persons;
+        $order->number_kids        = $request->kids;
         $order->total_price        = $total;
         $order->email              = $request->email;
         $order->type_pay_id        = $request->payed;

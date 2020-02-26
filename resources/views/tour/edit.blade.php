@@ -92,6 +92,17 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <div class="col-12 col-md-3 mt-2">
+                                        <div class="form-group mb-2">
+                                            <label class="small">PRECIO NIÑOS </label>
+                                            <div class="w-100"></div>
+                                            <input type="text" name="price_kids" data-behaviour="decimal" required class="form-control form-control-sm" value="{{price( $tour->price_kids ) }}">
+                                            <div class="w-100"></div>
+                                            @if($errors)
+                                                <span class="text-danger"> {{$errors->first('price_kids')}}</span>
+                                            @endif
+                                        </div>
+                                    </div>
                                     <div class="col-12">
                                         <div class="form-group mb-2">
                                             <label class="small"> DECRIPCIÓN </label>

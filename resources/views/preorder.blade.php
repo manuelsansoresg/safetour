@@ -43,9 +43,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="staticEmail" class="col-sm-5 col-form-label font-weight-bold">#PERSONS</label>
+                            <label for="staticEmail" class="col-sm-5 col-form-label font-weight-bold">#ADULTS</label>
                             <div class="col-sm-7">
                                 <input type="number" min="1" onchange="updateTotal()"  class="form-control" id="persons" name="persons" value="{{ $data['persons'] }}" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="staticEmail" class="col-sm-5 col-form-label font-weight-bold">#KIDS</label>
+                            <div class="col-sm-7">
+                                <input type="number" min="1" onchange="updateTotal()"  class="form-control" id="kids" name="kids" value="{{ $data['kids'] }}" required>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -83,9 +89,13 @@
                             <div class="col-sm-7">
                                 <?php
                                 $percent = $data['percent_online']/100;
-                                $sub_total = ($data['price'] * $percent );
-                                $total = $data['price'] -$sub_total;
+                                $price_adult =   $data['persons'] * $data['price'] ;
+                                $price_kids =  $data['kids'] *  $data['price_kids'] ;
+                                $suma        = $price_adult + $price_kids;
+                                $sub_total = ($suma * $percent );
+                                $total = $suma -$sub_total;
                                 ?>
+
                                 <div class="col-12 text-center bg-gray-light py-2 h5" id="d_total"> {{ $total }} MXN</div>
                             </div>
                         </div>
@@ -95,7 +105,7 @@
                             </div>
                         </div>
                         <div class="form-group row justify-content-center text-center">
-                            <button class="btn btn-warning btn-block font-weight-bold"> <span class="font-weight-bold">BUY</span>  </button>
+                            <button class="btn btn-warning btn-block font-weight-bold" id="btn-buy"> <span class="font-weight-bold">BUY</span>  </button>
                             <small class="text-center">  All Tours Include Pick Up Transportation</small>
                             <div class="w-100"></div>
                             <button  onclick="onlyReservation()" class="btn btn-primary btn-block font-weight-bold"> <span class="font-weight-bold">RESERVE PAY AT PICK UP</span>    </button>

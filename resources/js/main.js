@@ -94,15 +94,25 @@ $(document).ready(function() {
 
         window.setTotal = function (count) {
 
-            var persons =  parseInt( $('#persons'+count).val());
-            var datepicker = $('#datepicker'+count).val();
-            var price = parseFloat($('#price'+count).val());
+            var persons        =  parseInt( $('#persons'+count).val());
+            var kids           =  parseInt( $('#kids'+count).val());
+            var datepicker     = $('#datepicker'+count).val();
+            var price_persons  = parseFloat($('#price'+count).val());
+            var price_kids     = parseFloat($('#price_kids'+count).val());
 
-            var total = persons * price;
+            var sub_persons = price_persons *persons  ;
+            var sub_kids    = price_kids * kids ;
+            var total       = sub_persons + sub_kids;
+
+            console.log('persons' +persons);
+            console.log('price_persons' +price_persons);
+
+            console.log('kids' +kids);
+            console.log('price_kids' +price_kids);
 
             $('#total'+count).val('TOTAL '+ total + ' MXN');
 
-            console.log('persons'+persons);
+
         }
 
     }

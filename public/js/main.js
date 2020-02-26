@@ -2132,8 +2132,10 @@ $(document).ready(function () {
     var getTotalPreorder = function getTotalPreorder() {
       var price = $('#price').val();
       var persons = $('#persons').val();
+      var kids = $('#kids').val();
       var payed = $('#payed_selected').val();
-      var url = '/tour/calculate/send?price=' + price + '&persons=' + persons + '&payed=' + payed; //var url  = '/tour/order/calculate?price='+price+'&persons='+persons+'&payed='+payed+'&name='+name+'&watsapp='+watsapp+'&point='+point+'&date='+date+'&email='+email;
+      var tour_slug = $('#tour_slug').val();
+      var url = '/tour/calculate/send?kids=' + kids + '&persons=' + persons + '&payed=' + payed + '&tour_slug=' + tour_slug; //var url  = '/tour/order/calculate?price='+price+'&persons='+persons+'&payed='+payed+'&name='+name+'&watsapp='+watsapp+'&point='+point+'&date='+date+'&email='+email;
 
       axios.get(url).then(function (response) {
         var result = response.data;
@@ -2144,6 +2146,7 @@ $(document).ready(function () {
     var btnPay = function btnPay() {
       var price = $('#price').val();
       var persons = $('#persons').val();
+      var kids = $('#kids').val();
       var payed = $('#payed_selected').val();
       var name = $('#name').val();
       var watsapp = $('#watsapp').val();
@@ -2152,7 +2155,7 @@ $(document).ready(function () {
       var email = $('#email').val();
       var tour_slug = $('#tour_slug').val();
       var type_reservation = $('#type_reservation').val();
-      var url = '/tour/btn-pay/send?price=' + price + '&persons=' + persons + '&payed=' + payed + '&name=' + name + '&watsapp=' + watsapp + '&point=' + point + '&date=' + date + '&email=' + email + '&tour_slug=' + tour_slug + '&type_reservation=' + type_reservation;
+      var url = '/tour/btn-pay/send?price=' + price + '&persons=' + persons + '&payed=' + payed + '&name=' + name + '&watsapp=' + watsapp + '&point=' + point + '&date=' + date + '&email=' + email + '&tour_slug=' + tour_slug + '&type_reservation=' + type_reservation + '&kids=' + kids;
 
       if (name != '' && watsapp != '' && point != '' && email != '') {
         $('#spinner').show();
@@ -2173,7 +2176,14 @@ $(document).ready(function () {
     });
 
     window.changePayed = function (id) {
-      $('#payed_selected').val(id);
+      var payed = $('#payed_selected').val(id);
+
+      if (id == 2 || id == 3) {
+        $('#btn-buy').hide();
+      } else {
+        $('#btn-buy').show();
+      }
+
       getTotalPreorder();
     };
 
@@ -2295,11 +2305,18 @@ $(document).ready(function () {
 
     window.setTotal = function (count) {
       var persons = parseInt($('#persons' + count).val());
+      var kids = parseInt($('#kids' + count).val());
       var datepicker = $('#datepicker' + count).val();
-      var price = parseFloat($('#price' + count).val());
-      var total = persons * price;
-      $('#total' + count).val('TOTAL ' + total + ' MXN');
+      var price_persons = parseFloat($('#price' + count).val());
+      var price_kids = parseFloat($('#price_kids' + count).val());
+      var sub_persons = price_persons * persons;
+      var sub_kids = price_kids * kids;
+      var total = sub_persons + sub_kids;
       console.log('persons' + persons);
+      console.log('price_persons' + price_persons);
+      console.log('kids' + kids);
+      console.log('price_kids' + price_kids);
+      $('#total' + count).val('TOTAL ' + total + ' MXN');
     };
   }
 

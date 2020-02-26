@@ -13,7 +13,12 @@ $(document).ready(function() {
         });
 
         window.changePayed = function (id) {
-            $('#payed_selected').val(id);
+            var payed = $('#payed_selected').val(id);
+            if(id == 2 || id == 3  ){
+                $('#btn-buy').hide();
+            }else{
+                $('#btn-buy').show();
+            }
             getTotalPreorder();
         }
 
@@ -31,20 +36,17 @@ $(document).ready(function() {
 
             var price       = $('#price').val();
             var persons     = $('#persons').val();
+            var kids        = $('#kids').val();
             var payed       = $('#payed_selected').val();
+            var tour_slug   = $('#tour_slug').val();
 
-
-
-            var url  = '/tour/calculate/send?price='+price+'&persons='+persons+'&payed='+payed;
+            var url         = '/tour/calculate/send?kids='+kids+'&persons='+persons+'&payed='+payed+'&tour_slug='+tour_slug;
             //var url  = '/tour/order/calculate?price='+price+'&persons='+persons+'&payed='+payed+'&name='+name+'&watsapp='+watsapp+'&point='+point+'&date='+date+'&email='+email;
 
             axios.get(url)
                 .then(function (response) {
                     var result = response.data;
                     $('#d_total').html(result.total+' MXN');
-
-
-
                 })
                 .catch(function (error) {
 
@@ -52,9 +54,10 @@ $(document).ready(function() {
         }
 
         function btnPay() {
-            var price       = $('#price').val();
-            var persons     = $('#persons').val();
-            var payed       = $('#payed_selected').val();
+            var price           = $('#price').val();
+            var persons         = $('#persons').val();
+            var kids            = $('#kids').val();
+            var payed           = $('#payed_selected').val();
 
             var name             = $('#name').val();
             var watsapp          = $('#watsapp').val();
@@ -64,7 +67,7 @@ $(document).ready(function() {
             var tour_slug        = $('#tour_slug').val();
             var type_reservation = $('#type_reservation').val();
 
-            var url  = '/tour/btn-pay/send?price='+price+'&persons='+persons+'&payed='+payed+'&name='+name+'&watsapp='+watsapp+'&point='+point+'&date='+date+'&email='+email+'&tour_slug='+tour_slug+'&type_reservation='+type_reservation;
+            var url  = '/tour/btn-pay/send?price='+price+'&persons='+persons+'&payed='+payed+'&name='+name+'&watsapp='+watsapp+'&point='+point+'&date='+date+'&email='+email+'&tour_slug='+tour_slug+'&type_reservation='+type_reservation+'&kids='+kids;
 
             if(name != '' && watsapp!= '' && point != '' && email != ''){
                 $('#spinner').show();

@@ -76,6 +76,8 @@ class HomeController extends Controller
             'persons'           => $request->persons[0],
             'date'              => $request->date[0],
             'price'             => $request->price[0],
+            'price_kids'        => $request->price_kids[0],
+            'kids'             => $request->kids[0],
             'total'             => $request->total[0],
             'percent_online'    => $percent_online->price,
             'id_percent_online' => $percent_online->id,

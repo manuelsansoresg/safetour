@@ -32,7 +32,7 @@
                     <div class="landing__img-tour__legend2 minimize{{ $cont }}">
                         <div class="landing__information-movil">TOUR INFORMATION / RESERVATION HERE</div>
                         <div class="mt-2"> <h1>{{ $tour->name }}</h1> </div>
-                        <div class="mt-2 col col-md-3"> <a onclick="loadMore('{{ $cont  }}')"  class="btn btn-warning btn-lg btn-block"> <span class="font-weight-bold">INFORMATION</span> </a>  </div>
+                        <div class="mt-2 col col-md-3"> <a onclick="loadMore('{{ $cont  }}')"  class="btn btn-warning btn-lg btn-block text-dark"> <span class="font-weight-bold">INFORMATION</span> </a>  </div>
                     </div>
 
                     <div class="landing__img-tour__legend2 landing__img-tour__legend2big more" id="more{{ $cont }}" style="display: none">
@@ -52,10 +52,10 @@
                                {{-- <div class="col-2 d-none">
                                     <input  type="number" onchange="setTotal('{{ $cont }}')" min="1"  class="input-number d-none"  value="1">
                                 </div>--}}
-                                <div class="col-10 col-md-6">
+                                <div class="col-5 col-md-3 pr-0">
                                     <div class="h5">
-                                        <select class="form-control" name="persons[]" id="persons{{ $cont }}" >
-                                            <option value="0"># Persons</option>
+                                        <select class="form-control" name="persons[]" id="persons{{ $cont }}" onchange="setTotal({{ $cont }})" required>
+                                            <option value="0">ADULTS</option>
                                             <option value="1">1 Person</option>
                                             <option value="2">2 Persons</option>
                                             <option value="3">3 Persons</option>
@@ -79,6 +79,33 @@
                                         </select>
                                     </div>
                                 </div>
+                                <div class="col-5 col-md-3 pl-0">
+                                    <div class="h5">
+                                        <select class="form-control" name="kids[]" id="kids{{ $cont }}" onchange="setTotal({{ $cont }})" required>
+                                            <option value="0">KIDS</option>
+                                            <option value="1">1 kid</option>
+                                            <option value="2">2 Kids</option>
+                                            <option value="3">3 Kids</option>
+                                            <option value="4">4 Kids</option>
+                                            <option value="5">5 Kids</option>
+                                            <option value="6">6 Kids</option>
+                                            <option value="7">7 Kids</option>
+                                            <option value="8">8 Kids</option>
+                                            <option value="9">9 Kids</option>
+                                            <option value="10">10 Kids</option>
+                                            <option value="11">11 Kids</option>
+                                            <option value="12">12 Kids</option>
+                                            <option value="13">13 Kids</option>
+                                            <option value="14">14 Kids</option>
+                                            <option value="15">15 Kids</option>
+                                            <option value="16">16 Kids</option>
+                                            <option value="17">17 Kids</option>
+                                            <option value="18">18 Kids</option>
+                                            <option value="19">19 Kids</option>
+                                            <option value="20">20 Kids</option>
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row mt-2 justify-content-center">
                                 {{--<div class="col-2">
@@ -87,13 +114,14 @@
                                 <div class="col-10 col-md-6  text-sm-left">
                                     <input type="text" name="date[]" placeholder="Tour Date" id="datepicker{{ $cont }}" class="datepicker" readonly autocomplete="off">
                                     <input type="hidden"  name="price[]"  id="price{{ $cont }}" value="{{ $tour->price }}">
+                                    <input type="hidden"  name="price_kids[]"  id="price_kids{{ $cont }}" value="{{ $tour->price_kids }}">
                                     <input type="hidden"  name="slug[]"   value="{{ $tour->slug }}">
                                 </div>
                             </div>
                             <div class="row mt-2 justify-content-center mt-4">
 
                                 <div class="col-10 col-md-6 text-left text-sm-left">
-                                    <input type="text" name="total[]"  id="total{{ $cont }}" style="background-color: #D9D9D9" class="input"  value="TOTAL {{ $tour->price }} MXN" >
+                                    <input type="text" disabled name="total[]"  id="total{{ $cont }}" style="background-color: #D9D9D9" class="input"  value="TOTAL {{ $tour->price }} MXN" >
                                 </div>
 
                             </div>

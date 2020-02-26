@@ -8,11 +8,11 @@ use Verot\Upload\Upload;
 
 class Tour extends Model
 {
-    protected $fillable  = ['name', 'description', 'price', 'slug'];
+    protected $fillable  = ['name', 'description', 'price', 'price_kids', 'slug'];
 
     public static function getAll()
     {
-        $tour = Tour::select('tours.id','tours.name', 'description', 'price', 'slug', 'tour_images.name as image')
+        $tour = Tour::select('tours.id', 'price_kids', 'tours.name', 'description', 'price', 'slug', 'tour_images.name as image')
                         ->join('tour_images', 'tour_images.tour_id', '=' , 'tours.id')
                         ->get();
         return $tour;
