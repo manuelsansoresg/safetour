@@ -13,7 +13,7 @@ class Tour extends Model
     public static function getAll()
     {
         $tour = Tour::select('tours.id', 'price_kids', 'tours.name', 'description', 'price', 'slug', 'tour_images.name as image')
-                        ->join('tour_images', 'tour_images.tour_id', '=' , 'tours.id')
+                        ->leftJoin('tour_images', 'tour_images.tour_id', '=' , 'tours.id')
                         ->get();
         return $tour;
     }

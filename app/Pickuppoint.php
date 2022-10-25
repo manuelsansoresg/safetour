@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pickuppoint extends Model
 {
+    protected $table = 'pickUpPoints';
     protected $fillable = ['name'];
 
     public static function saveEdit($request,  $id = null)

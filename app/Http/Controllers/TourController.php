@@ -25,7 +25,6 @@ class TourController extends Controller
     {
         $tours = Tour::getAll();
         $path = $this->path_image;
-
         return view('tour.index', compact('tours', 'path'));
     }
 

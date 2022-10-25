@@ -30,7 +30,7 @@ class CreateOrderTable extends Migration
             $table->string('pref_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('pickuppoint_id')->references('id')->on('pickuppoints')
+            $table->foreign('pickuppoint_id')->references('id')->on('pickUpPoints')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('type_pay_id')->references('id')->on('type_pays')
                 ->onUpdate('cascade')->onDelete('cascade');

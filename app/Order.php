@@ -13,7 +13,7 @@ class Order extends Model
     {
         $tour = Order::select('tours.name',  'orders.name as name_client', 'total_price', 'email', 'watsapp', 'quantity', 'date', 'status', 'orders.type', 'orders.created_at')
                         ->join('type_pays', 'type_pays.id', '=', 'orders.type_pay_id')
-                        ->join('pickuppoints', 'pickuppoints.id', '=', 'orders.pickuppoint_id')
+                        ->join('pickUpPoints', 'pickUpPoints.id', '=', 'orders.pickuppoint_id')
                         ->join('tours', 'tours.id', '=', 'orders.tour_id')
                         ->orderBy('orders.created_at', 'desc')
                         ->get();
@@ -23,9 +23,9 @@ class Order extends Model
     public static function getById($order_id)
     {
         DB::enableQueryLog();
-        $order = Order::select('tours.id', 'slug', 'tours.name as name', 'orders.name as name_user', 'pickuppoints.name as pays_name', 'type_pay_id', 'watsapp', 'tours.name as name_tour', 'quantity as persons', 'date', 'email', 'total_price')
+        $order = Order::select('tours.id', 'slug', 'tours.name as name', 'orders.name as name_user', 'pickUpPoints.name as pays_name', 'type_pay_id', 'watsapp', 'tours.name as name_tour', 'quantity as persons', 'date', 'email', 'total_price')
                     ->join('type_pays', 'type_pays.id', '=', 'orders.type_pay_id', 'left')
-                    ->join('pickuppoints', 'pickuppoints.id', '=', 'orders.pickuppoint_id', 'left')
+                    ->join('pickUpPoints', 'pickUpPoints.id', '=', 'orders.pickuppoint_id', 'left')
                     ->join('tours', 'tours.id', '=', 'orders.tour_id')
                     ->where('orders.id', $order_id )
                     ->first();

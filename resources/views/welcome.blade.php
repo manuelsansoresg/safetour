@@ -121,7 +121,7 @@
                             <div class="row mt-2 justify-content-center mt-4">
 
                                 <div class="col-10 col-md-6 text-left text-sm-left">
-                                    <input type="text" disabled name="total[]"  id="total{{ $cont }}" style="background-color: #D9D9D9" class="input"  value="TOTAL {{ $tour->price }} MXN" >
+                                    <input type="text" readonly name="total[]"  id="total{{ $cont }}" style="background-color: #D9D9D9" class="input"  value="TOTAL {{ $tour->price }} MXN" >
                                 </div>
 
                             </div>
