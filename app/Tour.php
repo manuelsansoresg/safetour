@@ -61,27 +61,19 @@ class Tour extends Model
                 $image = TourImages::find($tour->id);
                 @unlink($path .'/'.$image->name);
                 @unlink($path . '/thumb_' . $image->name);
-
-
             }
-
-
-
             $image_cover            = $request->file('image');
             $new_image              = self::uploadImage($request, 'image', $old_path);
-
-
-
             $set_img                = new TourImages();
-
             $image_movil_cover      = $request->file('name_movil');
             //$new_image_movil        = uploadImage($_FILES['name_movil'], $image_movil_cover, $path, true);
            //$new_image_movil        = self::uploadImage($request, 'name_movil', $old_path);
-
-
             //move_uploaded_file($_FILES['name_movil']['tmp_name'], $path);
-
-            $set_img                = new TourImages();
+            if ($id == null) {
+                $set_img    = new TourImages();
+            } else {
+                $set_img    = TourImages::find($tour->id);
+            }
             $set_img->tour_id       = $tour->id;
             $set_img->name          = $new_image;
            /* $set_img->name_movil    = $new_image_movil;*/
@@ -97,10 +89,10 @@ class Tour extends Model
                 @unlink($path . '/thumb_' . $image->name_movil);
             }
 
-            $image_cover      = $request->file('name_movil');
+            $image_cover            = $request->file('name_movil');
             //$new_image        = uploadImage($_FILES['name_movil'], $image_cover, $path, true);
-            $new_image        = self::uploadImage($request, 'name_movil', $old_path);
-            $set_img          = TourImages::find($tour->id);
+            $new_image              = self::uploadImage($request, 'name_movil', $old_path);
+            $set_img                = TourImages::find($tour->id);
             $set_img->name_movil    = $new_image;
             $set_img->update();
         }
