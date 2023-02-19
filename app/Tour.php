@@ -79,7 +79,6 @@ class Tour extends Model
            /* $set_img->name_movil    = $new_image_movil;*/
             $set_img->save();
         }
-
         if ($request->hasFile('name_movil') != false) {
 
             $path = '.'.$path.'/'. $tour->id;
@@ -88,7 +87,6 @@ class Tour extends Model
                 @unlink($path .'/'.$image->name_movil);
                 @unlink($path . '/thumb_' . $image->name_movil);
             }
-
             $image_cover            = $request->file('name_movil');
             //$new_image        = uploadImage($_FILES['name_movil'], $image_cover, $path, true);
             $new_image              = self::uploadImage($request, 'name_movil', $old_path);
