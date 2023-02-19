@@ -66,9 +66,6 @@ class Tour extends Model
             $new_image              = self::uploadImage($request, 'image', $old_path);
             $set_img                = new TourImages();
             $image_movil_cover      = $request->file('name_movil');
-            //$new_image_movil        = uploadImage($_FILES['name_movil'], $image_movil_cover, $path, true);
-           //$new_image_movil        = self::uploadImage($request, 'name_movil', $old_path);
-            //move_uploaded_file($_FILES['name_movil']['tmp_name'], $path);
             if ($id == null) {
                 $set_img    = new TourImages();
             } else {
